@@ -5,4 +5,5 @@ class hello {
         package { 'lynx':
                 ensure => installed,
                 name   => $lynx,
+		allowcdrom => 'true',
         }
