@@ -56,3 +56,19 @@ service { "apache2":
         }
 }
 
+Seuraavaksi testasin, että Apache todellakin oli asentamatta:
+sudo service apache2 start
+
+aiheutti virheilmoituksen
+Failed to start apache2.service: Unit apach2.service not found.
+
+Aika siis ajaa puppet-moduuli:
+sudo puppet apply --modulepath ~/Asiakirjat/Opiskelu/puppet/modules/server/manifests/ -e 'class {"server":}'
+
+Tuli virheilmoitus, ettei luokkaa 'server' löytynyt. Palaan tähän myöhemmin.
+
+Siirrän tekstit githubiin:
+git add .
+git commit
+git pull https://gihub.com/mika-petri-lauronen/puppet
+git push https://github.com/mika-petri-lauronen/puppet
