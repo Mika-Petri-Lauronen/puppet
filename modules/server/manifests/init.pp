@@ -14,22 +14,22 @@ file {'/etc/ssh/sshd_config':
 service { 'ssh':
 		ensure => running,
 		enable => true,
-		hasstatus => true,
 		subscribe => Package['openssh-server'],
 		require => File['/etc/ssh/sshd_config'],
 }
 
 # Asennetaan Apache2
 package { 'apache2':
-	ensure => installed,
-	enable => true,
-	allowcdrom => true,
+	ensure => 'installed',
+	enable => 'true',
+	allowcdrom => 'true',
 }
 
 service { 'apache2':
-	ensure => true,
-	enable => true,
+	ensure => 'true',
+	enable => 'true',
 	require => Package['apache2'],
 }
+
 }
 
