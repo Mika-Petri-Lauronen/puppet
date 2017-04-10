@@ -7,31 +7,29 @@ package { 'openssh-server':
 }
 
 file {'/etc/ssh/sshd_config':
-	ensure => file,
-	require => Package{'openssh-server'],
+	ensure => "file",
+	require => Package['openssh-server'],
 }
 
 service { 'ssh':
-		ensure => $running,
-		enable => $enable,
+		ensure => running,
+		enable => true,
 		hasstatus => true,
-		subscribe => [Package['openssh-server'],
+		subscribe => Package['openssh-server'],
 		require => File['/etc/ssh/sshd_config'],
-	}
 }
 
-# Asennetaan Apache
+# Asennetaan Apache2
 package { 'apache2':
 	ensure => installed,
-	allowcdrom => true,
-	}
-
-service { "apache2":
 	enable => true,
-	ensure => started,
-	hasrestart => true,
-	hasstatus => true,
-	require => Package["apache2"]
-	}
+	allowcdrom => true,
+}
+
+service { 'apache2':
+	ensure => true,
+	enable => true,
+	require => Package['apache2'],
+}
 }
 
