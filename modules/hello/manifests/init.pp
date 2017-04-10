@@ -1,5 +1,5 @@
 class hello {
-        file { '/tmp/hello'':
+        file { '/tmp/hello':
         content => "Hello World!\n"
         }
         package { 'lynx':
@@ -7,3 +7,4 @@ class hello {
                 name   => $lynx,
 		allowcdrom => 'true',
         }
+}
